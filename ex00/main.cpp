@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 #include <exception>
 #include "Bureaucrat.hpp"
 
@@ -10,17 +9,17 @@ int main()
     }
     catch(std::exception &e)
     {
-        std::cout << e.what() << "\n";
+        std::cout << e.what() << std::endl;
     }
 
     try //no error
     {
         Bureaucrat a("Narek", 100);
-        std::cout << "No error\n";
+        std::cout << a << std::endl;
     }
     catch(std::exception &e)
     {
-        std::cout << e.what() << "\n";
+        std::cout << e.what() << std::endl;
     }
 
     try //too high error
@@ -29,29 +28,45 @@ int main()
     }
     catch(std::exception &e)
     {
-        std::cout << e.what() << "\n";
+        std::cout << e.what() << std::endl;
     }
 
     try  //too low error
     {
         Bureaucrat a("Narek", 150);
-        a.decrementGrade();
+        try
+        {
+            a.decrementGrade();
+        }
+        catch (std::exception &e)
+        {
+            std::cout << e.what() << std::endl;
+        }
+        std::cout << a << std::endl;
 
     }
     catch(std::exception &e)
     {
-        std::cout << e.what() << "\n";
+        std::cout << e.what() << std::endl;
     }
 
     try  //too high
     {
         Bureaucrat a("Narek", 1);
-        a.incrementGrade();
+        try
+        {
+            a.incrementGrade();
+        }
+        catch (std::exception &e)
+        {
+            std::cout << e.what() << std::endl;
+        }
+        std::cout << a << std::endl;
 
     }
     catch(std::exception &e)
     {
-        std::cout << e.what() << "\n";
+        std::cout << e.what() << std::endl;
     }
 
 }

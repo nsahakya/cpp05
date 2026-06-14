@@ -1,17 +1,36 @@
+#include <cstdlib>
+#include <ctime>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
-
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(void)
 {
-    Form form("form", 130, 130);
-    Bureaucrat a("A", 125);
-    Bureaucrat b("B", 135);
+    std::srand(static_cast<unsigned int>(std::time(0)));
 
-    std::cout << form << std::endl;
-    a.signForm(form);
-    b.signForm(form);
+    Bureaucrat boss("Boss", 1);
+    Bureaucrat worker("Worker", 100);
+    Bureaucrat intern("Intern", 150);
 
-    return (0);
+    ShrubberyCreationForm shrub("home");
+    RobotomyRequestForm robot("Bender");
+    PresidentialPardonForm pardon("Arthur Dent");
 
+    std::cout << shrub << std::endl;
+    boss.signForm(shrub);
+    boss.executeForm(shrub);
+
+    worker.signForm(robot);
+    boss.signForm(robot);
+    worker.executeForm(robot);
+    boss.executeForm(robot);
+
+    intern.signForm(pardon);
+    boss.signForm(pardon);
+    intern.executeForm(pardon);
+    boss.executeForm(pardon);
+
+    return 0;
 }
